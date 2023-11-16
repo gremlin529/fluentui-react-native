@@ -69,9 +69,8 @@ const Icons: React.FunctionComponent = () => {
 });
 
 const noteFontSource = {
-  fontFamily: 'Font Awesome 5 Free',
-  fontSrcFile: testTtf,
-  codepoint: 0xf083,
+  fontFamily: 'Arial',
+  codepoint: 0x2663,
   fontSize: 15,
 };
 
