@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import * as React from 'react';
-import { Platform, PlatformColor, View } from 'react-native';
+import { Platform, PlatformColor, StyleSheet, TextStyle, View } from 'react-native';
 
 import { Text } from '@fluentui/react-native';
 import type { RasterImageIconProps, SvgIconProps, FontIconProps } from '@fluentui-react-native/icon';
-import { Icon } from '@fluentui-react-native/icon';
+import { Icon, FontIcon } from '@fluentui-react-native/icon';
 
 import { E2ETestingIcon } from './IconLegacyE2ETest';
 import { IconV1E2ETest } from './IconV1E2ETest';
@@ -27,6 +27,7 @@ const Icons: React.FunctionComponent = () => {
     codepoint: 0x2663,
     fontSize: 32,
   };
+
 
   // d20 icon by Lonnie Tapscott, licensed under CC BY, modified to use "currentColor"
   // https://thenounproject.com/search/?q=d20&i=2453700
@@ -53,10 +54,37 @@ const Icons: React.FunctionComponent = () => {
   const showRasterIcons = true;
   const shouldShowDataUri = Platform.OS !== 'android' && Platform.OS !== ('win32' as any);
 
+  const styles=({
+    historyDotCircle: {
+      backgroundColor: 'lightgrey',
+      borderRadius: 9999,
+      width: 28,
+      height: 28,
+    },
+    noteIcon: {
+      // display: 'flex',
+      textAlign: 'center',
+      // paddingTop: 8,
+    }
+});
+
+const noteFontSource = {
+  fontFamily: 'Font Awesome 5 Free',
+  fontSrcFile: testTtf,
+  codepoint: 0xf083,
+  fontSize: 15,
+};
+
+const iconStyle = StyleSheet.flatten(styles.noteIcon) as TextStyle;
+
   return (
     <View>
       {showFontIcons ? (
         <View>
+        <View style={styles.historyDotCircle}>
+          <FontIcon {...noteFontSource} style={iconStyle}/>
+        </View>
+
           <Text>Font icons</Text>
           {
             // We've seen some issues getting Font Awesome to link properly on Apple platforms in the FURN test app specifically.

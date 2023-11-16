@@ -9,6 +9,10 @@ import { useFontIcon } from './useFontIcon';
 
 export const FontIcon = stagedComponent((props: FontIconProps) => {
   const fontIconProps = useFontIcon(props);
+
+  console.log("props: ", props);
+  console.log("fontIconProps: ", fontIconProps);
+
   return (final: FontIconProps) => {
     const newProps = mergeProps<FontIconProps>(fontIconProps, final);
     const { codepoint, ...rest } = newProps;
